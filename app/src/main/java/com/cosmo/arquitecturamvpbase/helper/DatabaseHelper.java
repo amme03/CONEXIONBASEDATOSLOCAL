@@ -19,12 +19,26 @@ class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(IProductScheme.PRODUCT_TABLE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(Constants.DATABASE_NAME, " actualizando de versión a: " + newVersion);
-        db.execSQL("DROP TABLE IF EXISTS " + IProductScheme.PRODUCT_TABLE);
+        Log.w(Constants.DATABASE_NAME, " actualizando de base de datos "+ oldVersion + " a: " + newVersion);
+        /*
+        for (int i = oldVersion+1; i <=newVersion ; i++) {
+
+            if(2==i)
+            {
+
+            }
+        }*/
+        if(newVersion == 1){
+            db.execSQL(IProductScheme.PRODUCT_TABLE_CREATE);
+        }
+        if(newVersion == 2){
+            //db.execSQL(" ALTER TABLE " + IProductScheme.PRODUCT_TABLE +" ADD COLUMN_PRODUCT_ISSYNE NUMBER)");
+        }
     }
 }

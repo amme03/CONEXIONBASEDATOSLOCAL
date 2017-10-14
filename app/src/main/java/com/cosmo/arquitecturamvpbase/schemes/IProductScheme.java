@@ -12,17 +12,19 @@ public interface IProductScheme {
     String COLUMN_PRODUT_DESCRIPTION = "product_description";
     String COLUMN_PRODUCT_QUANTITY = "product_quantity";
     String COLUMN_PRODUCT_PRICE = "product_price";
+    String COLUMN_PRODUCT_ISSYNE = "product_issyne";
 
     String PRODUCT_TABLE_CREATE = "CREATE TABLE IF NOT EXISTS " + PRODUCT_TABLE + " ("
             + COLUMN_ID + " TEXT PRIMARY KEY, "
             + COLUMN_PRODUCT_NAME + " TEXT NOT NULL, "
             + COLUMN_PRODUT_DESCRIPTION + " TEXT, "
             + COLUMN_PRODUCT_QUANTITY + " TEXT, "
-            + COLUMN_PRODUCT_PRICE + " TEXT "
+            + COLUMN_PRODUCT_PRICE + " TEXT, "
+            + COLUMN_PRODUCT_ISSYNE + " NUMBER "
             + " );";
 
     String [] PRODUCT_COLUMNS = new String[] {
-            COLUMN_ID, COLUMN_PRODUCT_NAME, COLUMN_PRODUT_DESCRIPTION, COLUMN_PRODUCT_QUANTITY, COLUMN_PRODUCT_PRICE
+            COLUMN_ID, COLUMN_PRODUCT_NAME, COLUMN_PRODUT_DESCRIPTION, COLUMN_PRODUCT_QUANTITY, COLUMN_PRODUCT_PRICE, COLUMN_PRODUCT_ISSYNE
     };
 
 

@@ -24,6 +24,7 @@
         <activity android:name=".views.activities.DetailActivity"></activity>
         <activity android:name=".views.activities.CreateProductActivity"></activity>
 
+
     </application>
 
 </manifest>

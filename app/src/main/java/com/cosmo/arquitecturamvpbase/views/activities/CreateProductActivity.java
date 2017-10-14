@@ -20,6 +20,8 @@ import com.cosmo.arquitecturamvpbase.presenter.ProductPresenter;
 import com.cosmo.arquitecturamvpbase.repository.ProductRepository;
 import com.cosmo.arquitecturamvpbase.views.BaseActivity;
 
+import static com.cosmo.arquitecturamvpbase.helper.Constants.PRODUCT_NOT_SYNCHRONIZED;
+
 /**
  * Created by jersonsuaza on 9/19/17.
  */
@@ -67,7 +69,7 @@ public class CreateProductActivity  extends BaseActivity<CreateProductPresenter>
                 product.setPrice(product_etPrice.getText().toString());
                 product.setQuantity(product_etQuantity.getText().toString());*/
                 getPresenter().createNewProduct(product_etName.getText().toString(), product_etDescription.getText().toString(),
-                        product_etPrice.getText().toString(),product_etQuantity.getText().toString());
+                        product_etPrice.getText().toString(),product_etQuantity.getText().toString(), PRODUCT_NOT_SYNCHRONIZED);
             }
         });
     }

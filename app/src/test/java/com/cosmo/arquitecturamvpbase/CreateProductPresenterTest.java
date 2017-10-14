@@ -52,7 +52,7 @@ public class CreateProductPresenterTest {
         product.setQuantity("empanda");
         product.setPrice("empanda");
         when(validateInternet.isConnected()).thenReturn(true);
-        createProductPresenter.createNewProduct("empanda", "empanda", "empanda", "empanda");
+        createProductPresenter.createNewProduct("empanda", "empanda", "empanda", "empanda", 1);
         verify(createProductPresenter).createThreadCreateProduct(refEq(product));
     }
 

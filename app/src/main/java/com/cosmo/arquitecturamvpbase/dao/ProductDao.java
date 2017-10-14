@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class ProductDao extends DbContentProvider implements IProductScheme, IProductDao {
 
+
+
     private Cursor cursor;
     private ContentValues initialValues;
 
@@ -58,6 +60,23 @@ public class ProductDao extends DbContentProvider implements IProductScheme, IPr
         }
     }
 
+    @Override
+    public int updateProduct(Product product) {
+        setContentValueProduct(product);
+        try{
+
+            String[] where=new String[]{product.getName()};
+            String select=COLUMN_PRODUCT_NAME+"=?";
+            int i=super.update(PRODUCT_TABLE,getContentValue(),select, where);
+
+            return i;
+        }catch (SQLiteConstraintException ex){
+            Log.e("DbErrorUpdateProduct", ex.getMessage());
+
+           return 0;
+        }
+
+    }
     private void setContentValueProduct(Product product) {
         initialValues = new ContentValues();
         initialValues.put(COLUMN_ID, product.getId());
@@ -65,7 +84,11 @@ public class ProductDao extends DbContentProvider implements IProductScheme, IPr
         initialValues.put(COLUMN_PRODUT_DESCRIPTION, product.getDescription());
         initialValues.put(COLUMN_PRODUCT_QUANTITY, product.getQuantity());
         initialValues.put(COLUMN_PRODUCT_PRICE, product.getPrice());
+        initialValues.put(COLUMN_PRODUCT_ISSYNE, product.getIsSync());
+
     }
+
+
 
     private ContentValues getContentValue() {
         return initialValues;
@@ -101,6 +124,10 @@ public class ProductDao extends DbContentProvider implements IProductScheme, IPr
             product.setPrice(cursor.getString(priceIndex));
         }
 
+        if(cursor.getColumnIndex(COLUMN_PRODUCT_ISSYNE) != -1){
+            priceIndex = cursor.getColumnIndexOrThrow(COLUMN_PRODUCT_ISSYNE);
+            product.setIsSync(cursor.getInt(priceIndex));
+        }
         return product;
     }
 }

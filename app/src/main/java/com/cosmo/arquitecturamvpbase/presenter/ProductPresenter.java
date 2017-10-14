@@ -28,7 +28,8 @@ public class ProductPresenter extends BasePresenter<IProductView> {
         if (getValidateInternet().isConnected()) {
             createThreadProduct();
         } else {
-            getView().showAlertDialogInternet(R.string.error, R.string.validate_internet);
+            createThreadProductDB();
+
         }
     }
 
@@ -37,12 +38,24 @@ public class ProductPresenter extends BasePresenter<IProductView> {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                //getProductList();
+                getProductList();
+
+            }
+        });
+        thread.start();
+    }
+    private void createThreadProductDB() {
+        // getView().showProgress(R.string.loading_message);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
                 getProductListDB();
             }
         });
         thread.start();
     }
+
 
     private void getProductListDB() {
         try {

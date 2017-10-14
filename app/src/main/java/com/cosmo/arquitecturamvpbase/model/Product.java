@@ -32,6 +32,10 @@ public class Product implements Serializable{
     private String id;
 
 
+
+    @Expose
+    private int isSync;
+
     public String getDescription() {
         return description;
     }
@@ -70,5 +74,13 @@ public class Product implements Serializable{
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setIsSync(int isSync) {
+        this.isSync = isSync;
+    }
+
+    public int getIsSync() {
+        return isSync;
     }
 }
